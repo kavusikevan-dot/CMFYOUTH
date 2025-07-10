@@ -1,19 +1,422 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>My static Space</title>
-		<link rel="stylesheet" href="style.css" />
-	</head>
-	<body>
-		<div class="card">
-			<h1>Welcome to your static Space!</h1>
-			<p>You can modify this app directly by editing <i>index.html</i> in the Files and versions tab.</p>
-			<p>
-				Also don't forget to check the
-				<a href="https://huggingface.co/docs/hub/spaces" target="_blank">Spaces documentation</a>.
-			</p>
-		</div>
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Children Of Mehr Youth Foundation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for elements that need more specific styling */
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(56, 182, 255, 0.8) 0%, rgba(255, 56, 182, 0.8) 100%);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .logo-container {
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-container:hover {
+            transform: scale(1.05);
+        }
+        
+        .directory-card {
+            transition: all 0.3s ease;
+        }
+        
+        .directory-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <div class="logo-container">
+                            <!-- Logo placeholder - replace with actual logo -->
+                            <div class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center text-white font-bold">
+                                CMYF
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-6">
+                        <a href="#" class="nav-link border-red-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            <i class="fas fa-home mr-1 text-red-500"></i> Home
+                        </a>
+                        <a href="#" class="nav-link border-green-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            <i class="fas fa-info-circle mr-1 text-green-500"></i> About
+                        </a>
+                        <a href="#" class="nav-link border-yellow-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            <i class="fas fa-graduation-cap mr-1 text-yellow-500"></i> Programs
+                        </a>
+                        <a href="#" class="nav-link border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            <i class="fas fa-calendar-alt mr-1 text-blue-500"></i> Events
+                        </a>
+                        <a href="#" class="nav-link border-red-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            <i class="fas fa-hands-helping mr-1 text-red-500"></i> Volunteer
+                        </a>
+                        <a href="#" class="nav-link border-green-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            <i class="fas fa-newspaper mr-1 text-green-500"></i> News
+                        </a>
+                        <a href="#" class="nav-link border-yellow-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            <i class="fas fa-hand-holding-usd mr-1 text-yellow-500"></i> Donate
+                        </a>
+                        <a href="#" class="nav-link border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            <i class="fas fa-envelope mr-1 text-blue-500"></i> Contact
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">
+                        Donate Now
+                    </button>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div id="mobile-menu" class="hidden sm:hidden">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="#" class="bg-red-50 border-red-500 text-red-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                    <i class="fas fa-home mr-2"></i> Home
+                </a>
+                <a href="#" class="bg-green-50 border-green-500 text-green-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                    <i class="fas fa-info-circle mr-2"></i> About
+                </a>
+                <a href="#" class="bg-yellow-50 border-yellow-500 text-yellow-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                    <i class="fas fa-graduation-cap mr-2"></i> Programs
+                </a>
+                <a href="#" class="bg-blue-50 border-blue-500 text-blue-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                    <i class="fas fa-calendar-alt mr-2"></i> Events
+                </a>
+                <a href="#" class="bg-red-50 border-red-500 text-red-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                    <i class="fas fa-hands-helping mr-2"></i> Volunteer
+                </a>
+                <a href="#" class="bg-green-50 border-green-500 text-green-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                    <i class="fas fa-newspaper mr-2"></i> News
+                </a>
+                <a href="#" class="bg-yellow-50 border-yellow-500 text-yellow-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                    <i class="fas fa-hand-holding-usd mr-2"></i> Give Back
+                </a>
+                <a href="#" class="bg-blue-50 border-blue-500 text-blue-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                    <i class="fas fa-envelope mr-2"></i> Contact
+                </a>
+                <div class="mt-4 pl-3 pr-4">
+                    <button class="w-full bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md text-base font-medium transition duration-300">
+                        Donate Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-gradient text-white">
+        <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <!-- Logo Space -->
+                <div class="mx-auto h-32 w-32 bg-white rounded-full shadow-xl flex items-center justify-center mb-8">
+                    <!-- Replace this div with your actual logo -->
+                    <div class="text-4xl font-bold text-blue-500">CMYF</div>
+                </div>
+                
+                <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl mb-4">
+                    Children Of Mehr Youth Foundation
+                </h1>
+                <p class="max-w-xl mx-auto text-xl opacity-90">
+                    Empowering youth through education, mentorship, and community support.
+                </p>
+                <div class="mt-10 flex justify-center space-x-4">
+                    <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-blue-600 bg-white hover:bg-gray-50">
+                        Learn More
+                    </a>
+                    <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 bg-opacity-80 hover:bg-opacity-100">
+                        Get Involved
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Directory Section -->
+    <div class="bg-white py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Our Directory
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                    Explore the different areas of our foundation and find what interests you.
+                </p>
+            </div>
+            
+            <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <!-- Directory Item 1 -->
+                <div class="directory-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
+                    <div class="p-6">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-blue-100 p-3 rounded-full">
+                                <i class="fas fa-graduation-cap text-blue-600 text-xl"></i>
+                            </div>
+                            <div class="ml-5">
+                                <h3 class="text-lg font-medium text-gray-900">Education Programs</h3>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p class="text-base text-gray-500">
+                                Our educational initiatives provide learning opportunities for underprivileged youth.
+                            </p>
+                        </div>
+                        <div class="mt-6">
+                            <a href="#" class="text-blue-600 hover:text-blue-500 font-medium">
+                                Explore programs <span aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Directory Item 2 -->
+                <div class="directory-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
+                    <div class="p-6">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-green-100 p-3 rounded-full">
+                                <i class="fas fa-hands-helping text-green-600 text-xl"></i>
+                            </div>
+                            <div class="ml-5">
+                                <h3 class="text-lg font-medium text-gray-900">Volunteer</h3>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p class="text-base text-gray-500">
+                                Join our team of dedicated volunteers making a difference in young lives.
+                            </p>
+                        </div>
+                        <div class="mt-6">
+                            <a href="#" class="text-green-600 hover:text-green-500 font-medium">
+                                Volunteer opportunities <span aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Directory Item 3 -->
+                <div class="directory-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
+                    <div class="p-6">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-purple-100 p-3 rounded-full">
+                                <i class="fas fa-calendar-alt text-purple-600 text-xl"></i>
+                            </div>
+                            <div class="ml-5">
+                                <h3 class="text-lg font-medium text-gray-900">Events</h3>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p class="text-base text-gray-500">
+                                Upcoming fundraisers, workshops, and community events.
+                            </p>
+                        </div>
+                        <div class="mt-6">
+                            <a href="#" class="text-purple-600 hover:text-purple-500 font-medium">
+                                View calendar <span aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Directory Item 4 -->
+                <div class="directory-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
+                    <div class="p-6">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-yellow-100 p-3 rounded-full">
+                                <i class="fas fa-newspaper text-yellow-600 text-xl"></i>
+                            </div>
+                            <div class="ml-5">
+                                <h3 class="text-lg font-medium text-gray-900">News & Stories</h3>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p class="text-base text-gray-500">
+                                Read inspiring stories from our community and stay updated.
+                            </p>
+                        </div>
+                        <div class="mt-6">
+                            <a href="#" class="text-yellow-600 hover:text-yellow-500 font-medium">
+                                Read stories <span aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Directory Item 5 -->
+                <div class="directory-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
+                    <div class="p-6">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-red-100 p-3 rounded-full">
+                                <i class="fas fa-hand-holding-usd text-red-600 text-xl"></i>
+                            </div>
+                            <div class="ml-5">
+                                <h3 class="text-lg font-medium text-gray-900">Give Back</h3>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p class="text-base text-gray-500">
+                                Your contribution helps us continue our mission to empower youth.
+                            </p>
+                        </div>
+                        <div class="mt-6">
+                            <a href="#" class="text-red-600 hover:text-red-500 font-medium">
+                                Ways to give <span aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Directory Item 6 -->
+                <div class="directory-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
+                    <div class="p-6">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-indigo-100 p-3 rounded-full">
+                                <i class="fas fa-users text-indigo-600 text-xl"></i>
+                            </div>
+                            <div class="ml-5">
+                                <h3 class="text-lg font-medium text-gray-900">About Us</h3>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p class="text-base text-gray-500">
+                                Learn about our mission, vision, and the team behind the foundation.
+                            </p>
+                        </div>
+                        <div class="mt-6">
+                            <a href="#" class="text-indigo-600 hover:text-indigo-500 font-medium">
+                                Our story <span aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="col-span-2">
+                    <h3 class="text-lg font-medium mb-4">Children Of Mehr Youth Foundation</h3>
+                    <p class="text-gray-300">
+                        Dedicated to creating opportunities and empowering the youth in our community through education, mentorship, and support.
+                    </p>
+                    <div class="mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Quick Links</h3>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Home</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">About Us</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Programs</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Events</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Legal</h3>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Terms of Service</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Donor Privacy</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">501(c)(3) Info</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between">
+                <p class="text-base text-gray-400">
+                    &copy; 2025 Children Of Mehr Youth Foundation. All rights reserved.
+                </p>
+                <div class="mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">
+                        <i class="fas fa-envelope mr-2"></i> cmfyouth2k@gmail.com
+                    </a>
+                    <span class="mx-2 text-gray-500">|</span>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add shadow to navbar on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 10) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=Kevan65/cmf-youth" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
 </html>

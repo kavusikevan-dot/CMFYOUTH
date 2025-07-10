@@ -1,10 +1,12 @@
 ---
-title: Cmf Youth
-emoji: ⚡
-colorFrom: purple
-colorTo: blue
+title: cmf-youth
+emoji: 🐳
+colorFrom: yellow
+colorTo: gray
 sdk: static
 pinned: false
+tags:
+  - deepsite
 ---
 
 Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
