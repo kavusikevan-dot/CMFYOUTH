@@ -4,43 +4,286 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Children Of Mehr Youth Foundation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            background-color: yellow;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
+        /* Custom CSS for elements that need more specific styling */
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(56, 182, 255, 0.8) 0%, rgba(255, 56, 182, 0.8) 100%);
         }
-        .content {
-            text-align: center;
+        
+        .nav-link {
+            position: relative;
         }
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
         }
-        p {
-            font-size: 1.5rem;
+        
+        .nav-link:hover::after {
+            width: 100%;
         }
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: black;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
+        
+        .logo-container {
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-container:hover {
+            transform: scale(1.05);
+        }
+        
+        .directory-card {
+            transition: all 0.3s ease;
+        }
+        
+        .directory-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
-<body>
-    <div class="content">
-        <h1>About Page</h1>
-        <p>This is the About subdirectory page.</p>
-        <a href="index.html">Back to Home</a>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <div class="logo-container">
+                            <!-- Replace src with your actual image URL -->
+                            <img src="https://i.postimg.cc/k403FjZV/CMYF.png" alt="Children Of Mehr Youth" class="h-10 w-auto">
+                        </div>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-6">
+                        <a href="index.html" class="nav-link border-red-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            <i class="fas fa-home mr-1 text-red-500"></i> Home
+                        </a>
+                        <a href="about.html" class="nav-link border-green-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            <i class="fas fa-info-circle mr-1 text-green-500"></i> About
+                        </a>
+                        <a href="events.html" class="nav-link border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            <i class="fas fa-calendar-alt mr-1 text-blue-500"></i> Events
+                        </a>
+                        <a href="donate.html" class="nav-link border-yellow-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            <i class="fas fa-hand-holding-usd mr-1 text-yellow-500"></i> Donate
+                        </a>
+                        <a href="contact.html" class="nav-link border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            <i class="fas fa-envelope mr-1 text-blue-500"></i> Contact
+                        </a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div id="mobile-menu" class="hidden sm:hidden">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="index.html" class="bg-red-50 border-red-500 text-red-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                    <i class="fas fa-home mr-2"></i> Home
+                </a>
+                <a href="about.html" class="bg-green-50 border-green-500 text-green-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                    <i class="fas fa-info-circle mr-2"></i> About
+                </a>
+                <a href="events.html" class="bg-blue-50 border-blue-500 text-blue-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                    <i class="fas fa-calendar-alt mr-2"></i> Events
+                </a>
+                <a href="donate.html" class="bg-yellow-50 border-yellow-500 text-yellow-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                    <i class="fas fa-hand-holding-usd mr-2"></i> Give Back
+                </a>
+                <a href="contact.html" class="bg-blue-50 border-blue-500 text-blue-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                    <i class="fas fa-envelope mr-2"></i> Contact
+                </a>
+                <div class="mt-4 pl-3 pr-4">
+                    <button class="w-full bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md text-base font-medium transition duration-300">
+                        Donate Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="min-h-screen bg-yellow-400 flex items-center justify-center">
+        <div class="content text-center">
+            <h1 class="text-5xl font-bold text-black mb-6">About Page</h1>
+            <p class="text-2xl text-black mb-8">This is the About subdirectory page.</p>
+        </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="col-span-2">
+                    <h3 class="text-lg font-medium mb-4">Children Of Mehr Youth Foundation</h3>
+                    <p class="text-gray-300">
+                        Creating a brighter future through equal access to learning, creativity, and technology.
+                    </p>
+                    <div class="mt-6">
+                        <a href="https://instagram.com/cmf.youth/" target="_blank" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Quick Links</h3>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="index.html" class="text-base text-gray-300 hover:text-white">Home</a></li>
+                        <li><a href="about.html" class="text-base text-gray-300 hover:text-white">About Us</a></li>
+                        <li><a href="events.html" class="text-base text-gray-300 hover:text-white">Events</a></li>
+                        <li><a href="contact.html" class="text-base text-gray-300 hover:text-white">Contact</a></li>
+                    </ul>
+                    <button id="translateBtn" class="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md text-white text-sm font-medium transition">
+                        <i class="fas fa-language mr-2"></i> فارسی (Farsi)
+                    </button>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Legal</h3>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="/privacy/" class="text-base text-gray-300 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="/terms/" class="text-base text-gray-300 hover:text-white">Terms of Service</a></li>
+                        <li><a href="/donor-privacy/" class="text-base text-gray-300 hover:text-white">Donor Privacy</a></li>
+                        <li><a href="/501c3/" class="text-base text-gray-300 hover:text-white">501(c)(3) Info</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between">
+                <p class="text-base text-gray-400" data-original-text="&copy; 2025 Children Of Mehr Youth Foundation. All rights reserved.">
+                    &copy; 2025 Children Of Mehr Youth Foundation. All rights reserved.
+                </p>
+                <div class="mt-4 md:mt-0">
+                    <a href="mailto:cmfyouthy2k@gmail.com" class="text-gray-400 hover:text-white text-sm">
+                        <i class="fas fa-envelope mr-2"></i> cmfyouthy2k@gmail.com
+                    </a>
+                    <span class="mx-2 text-gray-500">|</span>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add shadow to navbar on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 10) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+
+    <script>
+        // Translation functionality
+        const translateBtn = document.getElementById('translateBtn');
+        let isTranslated = false;
+
+        // Translation dictionary
+        const translations = {
+            // Header
+            'Children Of Mehr Youth Foundation': 'بنیاد کودکان مهر جوان',
+            'Opening doors to education and opportunity for every child in Iran.': 'باز کردن درها به سوی آموزش و فرصت برای هر کودک در ایران.',
+            
+            // Navigation
+            'Home': 'خانه',
+            'About': 'درباره ما',
+            'Programs': 'برنامه‌ها',
+            'Events': 'رویدادها',
+            'Volunteer': 'داوطلب شوید',
+            'News': 'اخبار',
+            'Donate': 'کمک مالی',
+            'Contact': 'تماس',
+            'Donate Now': 'همین حالا کمک کنید',
+
+            // Vision & Mission
+            'Our Vision': 'چشم‌انداز ما',
+            'Our vision is to provide education to children in the underprivileged areas in Iran. No matter their economic, geographic, and additional setbacks, all children deserve the right to education.': 'چشم‌انداز ما ارائه آموزش به کودکان در مناطق محروم ایران است. بدون توجه به مشکلات اقتصادی، جغرافیایی و سایر موانع، همه کودکان سزاوار حق تحصیل هستند.',
+            'We aim to create an environment that nurtures creativity, offers equal opportunities for all, and fosters valuable education. Through this, we shape a brighter and more creative society and help create a better future.': 'ما در تلاش برای ایجاد محیطی هستیم که خلاقیت را پرورش دهد، فرصت‌های برابر برای همه فراهم کند و آموزش ارزشمند را تقویت نماید. از این طریق، جامعه‌ای روشن‌تر و خلاق‌تر شکل می‌دهیم و به ساختن آینده‌ای بهتر کمک می‌کنیم.',
+            'Our Mission': 'ماموریت ما',
+            'Our mission is to empower children in Iran by providing access to equal education, technology, and books, promoting a deeper love of learning, and creating opportunities for a brighter future.': 'ماموریت ما توانمندسازی کودکان در ایران با فراهم‌آوردن دسترسی به آموزش برابر، فناوری و کتاب‌ها، ترویج عشق عمیق‌تر به یادگیری و ایجاد فرصت‌هایی برای آینده‌ای روشن‌تر است.',
+            'We believe every child deserves the chance to learn, grow, and reach their full potential regardless of their circumstances.': 'ما معتقدیم هر کودک بدون توجه به شرایطش، سزاوار فرصت یادگیری، رشد و رسیدن به پتانسیل کامل خود است.',
+
+            // Footer
+            'Creating a brighter future through equal access to learning, creativity, and technology.': 'ایجاد آینده ای روشن تر از طریق دسترسی برابر به یادگیری، خلاقیت و فناوری.',
+            'About Us': 'درباره ما',
+            'Quick Links': 'لینک‌های سریع',
+            'Legal': 'قانونی',
+            'Privacy Policy': 'سیاست حفظ حریم خصوصی',
+            'Terms of Service': 'شرایط استفاده',
+            'Donor Privacy': 'حریم خصوصی اهداکنندگان',
+            '501(c)(3) Info': 'اطلاعات 501(c)(3)',
+            'Learn More': 'اطلاعات بیشتر',
+            'Get Involved': 'مشارکت کنید',
+            '© 2025 Children Of Mehr Youth Foundation. All rights reserved.': '© 2025 بنیاد جوانان مهر. تمامی حقوق محفوظ است.'
+        };
+
+        translateBtn.addEventListener('click', function() {
+            if (isTranslated) {
+                // Revert to English
+                document.querySelectorAll('h1, h2, h3, p, a, button, span').forEach(element => {
+                    if (element.dataset.originalText) {
+                        element.textContent = element.dataset.originalText;
+                    }
+                });
+                document.body.style.direction = 'ltr';
+                translateBtn.innerHTML = '<i class="fas fa-language mr-2"></i> فارسی (Farsi)';
+            } else {
+                // Translate to Farsi
+                document.querySelectorAll('h1, h2, h3, p, a, button, span').forEach(element => {
+                    const text = element.textContent.trim();
+                    if (translations[text]) {
+                        element.dataset.originalText = text;
+                        element.textContent = translations[text];
+                    }
+                });
+                document.body.style.direction = 'rtl';
+                translateBtn.innerHTML = '<i class="fas fa-language mr-2"></i> English';
+            }
+            isTranslated = !isTranslated;
+        });
+    </script>
 </body>
 </html>
