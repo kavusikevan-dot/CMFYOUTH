@@ -1,0 +1,13 @@
+{
+  "name": "cmf-youth-website",
+  "version": "1.0.0",
+  "description": "Children Of Mehr Youth Foundation website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["website", "foundation", "youth", "education"],
+  "author": "Children Of Mehr Youth Foundation",
+  "license": "MIT"
+}
